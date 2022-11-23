@@ -3,6 +3,7 @@ package com.example.springbootdemo.pojo;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
@@ -13,6 +14,8 @@ import org.springframework.stereotype.Component;
 @ToString
 @Component
 public class User {
+    @Value("dxw")
     private String name;
+    @Value("100")
     private Integer age;
 }
