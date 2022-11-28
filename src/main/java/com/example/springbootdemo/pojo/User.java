@@ -15,8 +15,6 @@ import org.springframework.stereotype.Component;
 @ToString
 @Component
 public class User {
-    @Value("dxw")
-    private String name;
-    @Value("100")
-    private Integer age;
+    private String USER_ID;
+    private String USER_NAME;
 }
