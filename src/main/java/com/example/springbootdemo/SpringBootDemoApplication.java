@@ -1,8 +1,10 @@
 package com.example.springbootdemo;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.stereotype.Controller;
 
 
 /**

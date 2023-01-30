@@ -6,8 +6,13 @@ import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
+/**
+ * @author biwenxing
+ */
 @Mapper
 public interface myBatis {
-    @Select("select * from `my data`.user")
+    @Select("select * from `springBoot`.user")
     public List<User> queryUser();
+
+    public List<User> queryUser1();
 }

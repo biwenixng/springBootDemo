@@ -20,6 +20,5 @@ public class testMyBatis {
     public void test() {
         List<User> list = my.queryUser();
         System.out.println(list);
-
     }
 }
