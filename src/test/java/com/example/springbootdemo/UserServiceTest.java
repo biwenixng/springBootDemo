@@ -11,8 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.time.LocalDateTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAdjuster;
+import java.time.temporal.TemporalAdjusters;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -31,7 +33,7 @@ public class UserServiceTest {
     }
 
     @Test
-    public void test1(){
+    public void test1() throws InterruptedException {
 //        new Thread(
 //            () ->{
 //                String name = Thread.currentThread().getName();
@@ -68,22 +70,43 @@ public class UserServiceTest {
 //            System.out.println("**不能为空");
 //        }
 //        String map = o.map(s -> s == null).map(s -> "value").orElse("");
-
+//
         LocalDateTime time = LocalDateTime.now();
-        System.out.println(time);
-        System.out.println("getMonth---------"+time.getMonth().getValue());
-        System.out.println("getYear----------"+time.getYear());
-        System.out.println("getDayOfYear--------"+time.getDayOfYear());
-        System.out.println("getDayOfMonth----------"+time.getDayOfMonth());
-        System.out.println("getMinute----------"+time.getMinute());
-        System.out.println(time.plusDays(10).plusYears(-10));
+//        System.out.println(time);
+//        System.out.println("getMonth---------"+time.getMonth().getValue());
+//        System.out.println("getYear----------"+time.getYear());
+//        System.out.println("getDayOfYear--------"+time.getDayOfYear());
+//        System.out.println("getDayOfMonth----------"+time.getDayOfMonth());
+//        System.out.println("getMinute----------"+time.getMinute());
+//        System.out.println(time.plusDays(10).plusYears(-10));
+//
+//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+//
+//        System.out.println("1---------"+time.format(dtf));
+//        System.out.println("2---------"+dtf.format(time));
+//        LocalDateTime time1 = LocalDateTime.parse("20220203111111",dtf);
+//        System.out.println(time1);
+//        Instant now = Instant.now();
+//        Thread.sleep(6);
+//        Instant now1 = Instant.now();
+//        System.out.println("时间差"+((now1.getNano()-now.getNano())/1000000));
+//         LocalDateTime nextMonth =  time.with(TemporalAdjusters.firstDayOfMonth());
+//        System.out.println(nextMonth);
+          //标准时间
+        ZonedDateTime now = ZonedDateTime.now(Clock.systemUTC());
+        System.out.println("标准时间"+now);
+        //计算机默认时间
+        ZonedDateTime now1 = ZonedDateTime.now();
+        System.out.println("默认时间"+now1);
+        //指定时区创建时间
+        Thread.sleep(5);
+        ZonedDateTime now2 = ZonedDateTime.now(ZoneId.of("America/Marigot"));
+        System.out.println("指定时间"+now2);
+        LocalDateTime time2 = LocalDateTime.now();
+        Duration duration = Duration.between(now2,now);
+        System.out.println(duration.toNanos());
 
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
 
-        System.out.println("1---------"+time.format(dtf));
-        System.out.println("2---------"+dtf.format(time));
-        LocalDateTime time1 = LocalDateTime.parse("20220203111111",dtf);
-        System.out.println(time1);
     }
 
 }

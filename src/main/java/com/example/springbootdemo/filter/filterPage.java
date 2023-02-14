@@ -33,8 +33,8 @@ public class filterPage implements Filter {
         }else {
             System.out.println("---------未通过filter校验----------");
             response.sendRedirect("/account/error");
+            return;
         }
-        filterChain.doFilter(servletRequest, servletResponse);
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.example.springbootdemo.service;
 
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 /**
