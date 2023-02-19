@@ -36,10 +36,8 @@ public class userLogin {
         return Result.success(user);
     }
 
-    @GetMapping("/loginOut")
-    public Result<Map<String, Object>> loginOut(@RequestParam("token") String token) {
-        Map<String, Object> user = loginService.getUerInfo(token);
-
-        return Result.success(user);
+    @PostMapping("/loginOut")
+    public Result<Map<String, Object>> loginOut(@RequestHeader("X-Token") String token) {
+        return Result.success();
     }
 }
