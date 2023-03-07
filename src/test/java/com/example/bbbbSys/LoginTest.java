@@ -11,14 +11,20 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpringBootDemoApplication.class)
 public class LoginTest {
     @Autowired
-    private loginServiceImpl loginService;
+    private UserQuery userQuery;
 
     @Test
     public void userLogin(){
-        loginService.userLogin(new User());
+        User user = new User();
+        user.setUsername("1");
+        user.setPassword("'1' or 1 = '1'");
+
+        List<User> users = userQuery.loginUser(user);
+        System.out.println(users);
     }
 }

@@ -1,5 +1,7 @@
 package com.example.bbbbSys.controller.login;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.example.bbbbSys.comon.vo.Result;
 import com.example.bbbbSys.pojo.User;
 import com.example.bbbbSys.service.loginService;
@@ -38,6 +40,12 @@ public class userLogin {
 
     @PostMapping("/loginOut")
     public Result<Map<String, Object>> loginOut(@RequestHeader("X-Token") String token) {
+        return Result.success();
+    }
+
+    @PostMapping("/test")
+    public Result<Map<String, Object>> test(@RequestBody JSONObject json) {
+        System.out.println(json.toJSONString());
         return Result.success();
     }
 }

@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -21,4 +22,6 @@ public interface UserQuery {
      * @return
      */
     List<User> loginUser(User user);
+
+    List<Map> testUser(User user);
 }

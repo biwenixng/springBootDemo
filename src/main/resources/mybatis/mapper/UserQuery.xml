@@ -8,4 +8,7 @@
         select * from x_user WHERE username = #{username} and password = #{password}
     </select>
 
+    <select id="testUser" resultType="java.util.HashMap" parameterType="com.example.bbbbSys.pojo.User">
+        select * from x_user
+    </select>
 </mapper>

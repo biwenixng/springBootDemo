@@ -35,7 +35,7 @@ public class loginServiceImpl implements loginService {
         }
         User userInfo = users.get(0);
         String token = "user" + UUID.randomUUID();
-        redisTemplate.opsForValue().set(token, userInfo, 30, TimeUnit.MINUTES);
+//        redisTemplate.opsForValue().set(token, userInfo, 30, TimeUnit.MINUTES);
         HashMap<String, Object> data = new HashMap<>();
         data.put("token", token);
         return data;
@@ -45,11 +45,12 @@ public class loginServiceImpl implements loginService {
     public Map<String,Object> getUerInfo(String token) {
         Object object = redisTemplate.opsForValue().get(token);
         if (object != null){
-            User user = JSON.parseObject(JSON.toJSONString(object), User.class);
-            HashMap<String, Object> map = new HashMap<>();
-            map.put("name",user.getUsername());
-            map.put("avatar",user.getAvatar());
-            return  map;
+//            User user = JSON.parseObject(JSON.toJSONString(object), User.class);
+//            HashMap<String, Object> map = new HashMap<>();
+//            map.put("name",user.getUsername());
+//            map.put("avatar",user.getAvatar());
+//            return  map;
+            return  new HashMap<>();
         }else{
           return  null;
         }
