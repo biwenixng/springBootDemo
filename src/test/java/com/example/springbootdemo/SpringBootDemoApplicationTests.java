@@ -13,7 +13,7 @@ class SpringBootDemoApplicationTests {
     Person person;
     @Test
     void contextLoads() {
-        System.out.println("--------------------"+person.toString());
+        System.out.println("-------------"+person.toString());
     }
 
 }
