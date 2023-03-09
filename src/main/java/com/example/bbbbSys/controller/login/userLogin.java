@@ -35,6 +35,7 @@ public class userLogin {
         if (user == null){
             return  Result.fail("token无效");
         }
+        System.out.println("hhaaaa");
         return Result.success(user);
     }
 
