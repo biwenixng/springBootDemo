@@ -15,12 +15,12 @@ public class redisTest {
 
     @Test
     public void redisSet(){
-        redisTemplate.boundValueOps("name").set("dxw");
+        redisTemplate.boundValueOps("name1").set("芜湖");
     }
 
     @Test
     public void redisGet(){
-        Object name = redisTemplate.boundValueOps("name").get();
+        Object name = redisTemplate.boundValueOps("name1").get();
         System.out.println(name);
     }
 }
