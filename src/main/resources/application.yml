@@ -11,3 +11,11 @@ spring:
       restart:
         # 默认为true
         enabled: true
+
+    restart:
+      # 默认为true
+      enabled: true
+  rabbitmq:
+    host: 139.196.218.1
+    username: bwx
+    password: bwx
