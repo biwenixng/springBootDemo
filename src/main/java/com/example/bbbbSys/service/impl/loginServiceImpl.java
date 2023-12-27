@@ -5,14 +5,16 @@ import com.example.bbbbSys.comon.vo.Result;
 import com.example.bbbbSys.mapper.UserQuery;
 import com.example.bbbbSys.pojo.User;
 import com.example.bbbbSys.service.loginService;
+import com.example.bbbbSys.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.sql.Time;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -26,18 +28,28 @@ public class loginServiceImpl implements loginService {
     private UserQuery userQuery;
     @Autowired
     private RedisTemplate redisTemplate;
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+
 
     @Override
     public Map<String, Object> userLogin(User user) {
-        List<User> users = userQuery.loginUser(user);
-        if (users.size() == 0) {
-            return null;
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user.getUserName(),user.getPassword());
+        Authentication authenticate = authenticationManager.authenticate(authenticationToken);
+
+
+//        List<User> users = userQuery.loginUser(user);
+//        User loginUser = users.get(0);
+        if(Objects.isNull(authenticate)){
+            throw new RuntimeException("用户名或密码错误");
         }
-        User userInfo = users.get(0);
-        String token = "user" + UUID.randomUUID();
-//        redisTemplate.opsForValue().set(token, userInfo, 30, TimeUnit.MINUTES);
+        User loginUser = (User) authenticate.getPrincipal();
+        String userId = loginUser.getUserName();
+        String jwt = JwtUtil.createJWT(userId);
+        redisTemplate.opsForValue().set("login:"+userId,loginUser);
         HashMap<String, Object> data = new HashMap<>();
-        data.put("token", token);
+        data.put("token", jwt);
         return data;
     }
 

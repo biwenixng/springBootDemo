@@ -5,7 +5,24 @@
 <mapper namespace="com.example.bbbbSys.mapper.UserQuery">
 
     <select id="loginUser" resultType="com.example.bbbbSys.pojo.User" parameterType="com.example.bbbbSys.pojo.User">
-        select * from x_user WHERE username = #{username} and password = #{password}
+        select
+            id,
+            user_name as "userName" ,
+            nick_name as "nickName" ,
+            password   ,
+            status     ,
+            email      ,
+            phonenumber  as "phoneNumber",
+            sex        ,
+            avatar     ,
+            user_type  as "userType",
+            create_by  as "createBy",
+            create_time as "createTime",
+            update_by  as "updateBy",
+            update_time as "updateTime",
+            del_flag   as "delFlag"
+        from sys_user
+        WHERE user_name = #{userName} and password = #{password}
     </select>
 
     <select id="testUser" resultType="java.util.HashMap" parameterType="com.example.bbbbSys.pojo.User">

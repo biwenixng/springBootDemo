@@ -1,11 +1,13 @@
 package com.example.bbbbSys.controller.login;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.example.bbbbSys.comon.vo.Result;
 import com.example.bbbbSys.pojo.User;
 import com.example.bbbbSys.service.loginService;
+import com.example.bbbbSys.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -19,8 +21,7 @@ import java.util.Map;
 public class userLogin {
     @Autowired
     private loginService loginService;
-
-    @PostMapping("/login")
+    @RequestMapping("/login")
     public Result<Map<String, Object>> userLogin(@RequestBody User user) {
         Map<String, Object> data = loginService.userLogin(user);
         if (data != null){
@@ -35,11 +36,10 @@ public class userLogin {
         if (user == null){
             return  Result.fail("token无效");
         }
-        System.out.println("hhaaaa");
         return Result.success(user);
     }
 
-    @PostMapping("/loginOut")
+    @PostMapping("/c")
     public Result<Map<String, Object>> loginOut(@RequestHeader("X-Token") String token) {
         return Result.success();
     }
@@ -49,4 +49,10 @@ public class userLogin {
         System.out.println(json.toJSONString());
         return Result.success();
     }
+
+    @RequestMapping("/hello")
+    public String hello(){
+        return "World Hello";
+    }
+
 }
