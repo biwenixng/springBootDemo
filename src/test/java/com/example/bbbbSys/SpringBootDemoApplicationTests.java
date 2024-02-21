@@ -1,19 +1,19 @@
-package com.example.springbootdemo;
+package com.example.bbbbSys;
 
-import com.example.springbootdemo.pojo.Person;
-import com.example.springbootdemo.pojo.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.env.Environment;
 
 @SpringBootTest
 class SpringBootDemoApplicationTests {
 
+
     @Autowired
-    Person person;
+    private Environment env;
     @Test
     void contextLoads() {
-        System.out.println("-------------"+person.toString());
+        System.out.println("--------------------"+env.getProperty("spring.application.name"));
     }
 
 }
