@@ -1,24 +1,22 @@
-//package com.example.bbbbSys.controller.login;
-//
-//import com.alibaba.fastjson.JSONObject;
-//import com.example.bbbbSys.comon.vo.Result;
-//import com.example.bbbbSys.pojo.User;
-//import com.example.bbbbSys.service.loginService;
-//import com.example.bbbbSys.utils.JwtUtil;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.data.redis.core.RedisTemplate;
-//import org.springframework.security.authentication.AuthenticationManager;
-//import org.springframework.web.bind.annotation.*;
-//
-//import java.util.Map;
-//
-///**
-// * @author Administrator
-// */
-//@RestController
-//@RequestMapping("/user")
-////@CrossOrigin //跨域
-//public class userLogin {
+package com.example.bbbbSys.controller.login;
+
+import com.alibaba.fastjson.JSONObject;
+import com.example.bbbbSys.comon.vo.Result;
+import com.example.bbbbSys.pojo.User;
+import com.example.bbbbSys.service.loginService;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
+
+/**
+ * @author Administrator
+ */
+@RestController
+@RequestMapping("/")
+//@CrossOrigin //跨域
+public class userLogin {
 //    @Autowired
 //    private loginService loginService;
 //    @RequestMapping("/login")
@@ -49,10 +47,10 @@
 //        System.out.println(json.toJSONString());
 //        return Result.success();
 //    }
-//
-//    @RequestMapping("/hello")
-//    public String hello(){
-//        return "World Hello";
-//    }
-//
-//}
+
+    @RequestMapping("/hello")
+    public String hello(){
+        return "World Hello";
+    }
+
+}

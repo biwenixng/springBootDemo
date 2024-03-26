@@ -1,18 +1,19 @@
 spring:
   redis:
-    host: 139.196.218.1
+    host: 47.116.204.89
     port: 6379
+    password: bi517828158
   datasource:
-    url: jdbc:mysql://localhost:3306/springboot?serverTimezone=UTC
+    url: jdbc:mysql://47.116.204.89:3306/springboot?serverTimezone=UTC
     username: root
-    password: 123456
+    password: Bi3.1415926
     driver-class-name: com.mysql.cj.jdbc.Driver
   devtools:
       restart:
         # 默认为true
         enabled: true
 
-  rabbitmq:
-    host: 139.196.218.1
-    username: bwx
-    password: bwx
+#  rabbitmq:
+#    host: 139.196.218.1
+#    username: bwx
+#    password: bwx
