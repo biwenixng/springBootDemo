@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@SpringBootTest(classes = SpringBootDemoApplication.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @RunWith(SpringJUnit4ClassRunner.class)
 public class RabbitMqTest {
     @Autowired
@@ -15,7 +15,7 @@ public class RabbitMqTest {
 
     @Test
     public void test(){
-        amqpTemplate.convertAndSend("myqueue1","这是内容411111111112");
+        amqpTemplate.convertAndSend("myqueue1","hhh");
         System.out.println("发送成功");
     }
 

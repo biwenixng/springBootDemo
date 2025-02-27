@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml" />
+    <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <!--    此处填写的是logstash采集日志的端口    -->
+        <destination>14.103.177.159:5044</destination>
+        <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder" />
+    </appender>
+    <root level="INFO">
+        <!-- 配置哪个级别使用该appender -->
+        <appender-ref ref="LOGSTASH" />
+    </root>
+</configuration>
